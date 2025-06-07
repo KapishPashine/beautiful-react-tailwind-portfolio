@@ -1,0 +1,10 @@
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">\
+
+font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: normal;
+
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300;1,18..144,300&display=swap" rel="stylesheet">
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-style: normal;

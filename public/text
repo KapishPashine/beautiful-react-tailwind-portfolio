@@ -7,7 +7,7 @@ const projects = [
     title: "Modern Kitchen & Living Room Design",
     image: "/projects/project1.jpg",
     subimage: ["/projects/project3.jpg","/projects/project1.jpg"],
-    tags: ["Kitchen", "Living Room", "Modern"],
+    tags: ["Kitchen", "Living Room"],
     demoUrl: "#",
     githubUrl: "#",
   },
@@ -25,7 +25,7 @@ const projects = [
     title: "Dental Office & Hospital Interior Design",
     image: "/projects/project3.jpg",
     subimage: ["/projects/project3.jpg","/projects/project1.jpg"],
-    tags: ["Dental office", "hospital", "Healthcare"],
+    tags: ["Dental office", "Healthcare"],
     demoUrl: "#",
     githubUrl: "#",
   },
@@ -52,7 +52,7 @@ const projects = [
     title: "Dental Office & Hospital Interior Design",
     image: "/projects/project2.jpg",
     subimage: ["/projects/project2.jpg","/projects/project3.jpg"],
-    tags: ["Dental office", "hospital", "Healthcare"],
+    tags: ["Dental office", "Healthcare"],
     demoUrl: "#",
     githubUrl: "#",
   },
@@ -62,8 +62,8 @@ export const ProjectsSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="projects" className="py-24 px-4 relative relative bg-card ">
-      <div className="container mx-auto max-w-5xl">
+    <section id="projects" className="py-24 px-4 relative bg-card">
+      <div className="container mx-auto max-w-6xl"> {/* Increased max-width */}
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
           Featured <span className="text-primary"> Projects </span>
         </h2>
@@ -72,18 +72,18 @@ export const ProjectsSection = () => {
           Here are some of my recent projects. Each project was carefully crafted with attention to detail, performance, and user experience.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-10">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              className="group bg-back rounded-lg overflow-hidden shadow-xl card-hover cursor-pointer"
+              className="group bg-card rounded-2xl overflow-hidden shadow-md card-hover cursor-pointer w-full"
               onClick={() => navigate(`/project/${project.id}`, { state: { project } })}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className="h-48 overflow-hidden">
+              <div className="h-96 overflow-hidden"> {/* Increased image height */}
                 <img
                   src={project.image}
                   alt={project.title}
@@ -92,20 +92,17 @@ export const ProjectsSection = () => {
               </div>
 
               <div className="p-6">
-                                <h3 className="text-xl font-semibold mb-1 py-4">{project.title}</h3>
-
+                <h3 className="text-lg font-semibold mb-3">{project.title}</h3> {/* Larger title font size */}
                 <div className="flex flex-wrap gap-2">
-  {project.tags.map((tag, i) => (
-    <span
-      key={i}
-      className="px-4 py-2 text-xs font-medium border-2 rounded-full bg-secondary text-secondary-foreground"
-    >
-      {tag}
-    </span>
-  ))}
-</div>
-
-
+                  {project.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="px-4 py-2 text-xs font-medium border rounded-full bg-secondary text-secondary-foreground"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}

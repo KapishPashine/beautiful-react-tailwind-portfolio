@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import {
   Instagram,
   Linkedin,
@@ -15,6 +16,7 @@ import { useState } from "react";
 export const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const contactRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,8 +31,17 @@ export const ContactSection = () => {
       setIsSubmitting(false);
     }, 1500);
   };
+
+  const scrollToContact = () => {
+    contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section id="contact" className="py-24 px-4 relative bg-secondary/30">
+    <section
+      id="contact"
+      className="py-24 px-4 relative bg-secondary/30"
+      ref={contactRef}
+    >
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
           Get In <span className="text-primary"> Touch</span>
@@ -130,7 +141,7 @@ export const ContactSection = () => {
                   name="name"
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="Pedro Machado..."
+                  placeholder="John fox..."
                 />
               </div>
 

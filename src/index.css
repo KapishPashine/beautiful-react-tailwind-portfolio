@@ -1,5 +1,12 @@
 @import "tailwindcss";
+/* styles.css */
 
+body {
+ font-family: "Merriweather", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
 @theme {
   --color-border: hsl(var(--border));
   --color-background: hsl(var(--background));
@@ -9,6 +16,8 @@
   --color-primary-foreground: hsl(var(--primary-foreground));
 
   --color-card: hsl(var(--card));
+    --color-back: hsl(var(--back));
+
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
@@ -64,11 +73,11 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
+    --background: 210 40% 98%; /* Light Background for light theme */
     --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
-
+    --back :100 100% 100%;
     --primary: 250 47% 60%;
     --primary-foreground: 210 40% 98%;
 
@@ -76,15 +85,28 @@
   }
 
   .dark {
-    --background: 222 47% 4%;
+    --background: 222 47% 4%; /* Dark background */
     --foreground: 213 31% 91%;
 
     --card: 222 47% 8%;
+    --back :213 27% 14%;
 
     --primary: 250 65% 65%;
     --primary-foreground: 213 31% 91%;
 
     --border: 217 33% 20%;
+  }
+
+  /* Only modify the light theme background color */
+  .light {
+    --background: 45 100% 95%; /* Light Yellow Background for light mode */
+    --foreground: 222 47% 11%;  /* Foreground color remains the same */
+    --card: 0 0% 100%;          /* Card background color */
+    --back :0 100% 100%;
+
+    --primary: 250 47% 60%;     /* Primary color */
+    --primary-foreground: 210 40% 98%; /* Primary foreground color */
+    --border: 214 32% 91%;      /* Border color */
   }
 
   * {
@@ -130,10 +152,15 @@
 @utility card-hover {
   @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
 }
+@utility back-hover {
+  @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
+}
 
 @utility gradient-border {
   @apply relative rounded-md;
   background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
+    background: linear-gradient(to right, hsl(var(--back)), hsl(var(--back)));
+
   background-clip: padding-box;
   border: 1px solid transparent;
 }
